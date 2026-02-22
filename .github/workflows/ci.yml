@@ -1,4 +1,4 @@
-name: WordPress Theme CI
+name: YanskiWordPress Practice CI
 
 on:
     push:
@@ -9,16 +9,20 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            # 1️⃣ Checkout the repo
             - name: Checkout repository
               uses: actions/checkout@v3
 
+            # 2️⃣ Setup PHP
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.2"
 
-            - name: Check PHP syntax and show files
+            # 3️⃣ Safe multi-command CI step
+            - name: PHP Syntax Check (Practice)
               run: |
-                  echo "Starting PHP syntax check"; \
+                  echo "Starting PHP syntax check..."; \
                   find . -type f -name "*.php" -exec php -l {} \; ; \
-                  echo "All files checked"
+                  echo "All PHP files checked ✔"; \
+                  echo "You can safely add more commands here using semicolons!"

@@ -1,7 +1,6 @@
 # WordPress Theme - YanskiWordPress
 
-**Industry-Level PSR-12 CI**  
-![CI](https://github.com/hangten001/YanskiWordPress/actions/workflows/ci-industry.yml/badge.svg?branch=main)
+![Simple CI](https://github.com/hangten001/YanskiWordPress/actions/workflows/ci.yml/badge.svg?branch=main)
 
 Custom WordPress theme built from scratch.
 

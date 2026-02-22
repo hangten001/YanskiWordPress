@@ -5,7 +5,9 @@
  * @package YanskiWordPress
  * 
  */
+
 get_header();
+
 ?>
 
 <div class="content">Content</div>

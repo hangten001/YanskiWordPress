@@ -5,5 +5,4 @@
  * @package YanskiWordPress
  *
  */
-
-echo "Hel
+?>

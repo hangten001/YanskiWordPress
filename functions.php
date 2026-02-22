@@ -7,6 +7,5 @@
  * 
  */
 
-echo "Hell";
+echo "Hello";
 
-?>

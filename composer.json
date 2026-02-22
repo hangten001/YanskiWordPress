@@ -1,0 +1,6 @@
+{
+	"name": "hangten/yanskiwordpress",
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^4.0"
+	}
+}

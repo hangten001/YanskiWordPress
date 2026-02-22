@@ -5,6 +5,6 @@
  * @package YanskiWordPress
  */
 ?>
-   <footer>Footer</footer>
+<footer>Footer</footer>
 </body>
 </html>

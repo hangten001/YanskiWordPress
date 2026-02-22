@@ -1,1 +1,1 @@
-// WordPress Theme Development
+# WordPress Theme - YanskiWordPress

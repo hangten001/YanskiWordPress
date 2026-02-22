@@ -4,47 +4,57 @@ on:
     push:
         branches: [main]
     pull_request:
+        branches: [main]
 
 jobs:
     lint-and-validate:
         runs-on: ubuntu-latest
 
         steps:
-            # 1️⃣ Checkout repo
+            # 1️⃣ Checkout repository
             - name: Checkout repository
               uses: actions/checkout@v3
 
-            # 2️⃣ Setup PHP
-            - name: Setup PHP 8.2
+            # 2️⃣ Setup PHP 8.2
+            - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.2"
 
-            # 3️⃣ Install Composer dependencies
-            - name: Install Composer
-              run: composer install || echo "No composer.json, skipping"
+            # 3️⃣ Install Composer dependencies if composer.json exists
+            - name: Install Composer dependencies
+              run: |
+                  if [ -f composer.json ]; then
+                    composer install --no-interaction --prefer-dist
+                  else
+                    echo "No composer.json found, skipping composer install"
+                  fi
 
             # 4️⃣ PHP Syntax Check
-            - name: PHP syntax check
+            - name: PHP Syntax Check
               run: |
-                  echo "Starting PHP syntax check..."; \
-                  find . -type f -name "*.php" -exec php -l {} \; ; \
+                  echo "Starting PHP syntax check..."
+                  find . -type f -name "*.php" -exec php -l {} \;
                   echo "PHP syntax check done ✔"
 
-            # 5️⃣ PHP CodeSniffer (Industry standard PSR-12)
+            # 5️⃣ PHP CodeSniffer (PSR-12)
             - name: PHP CodeSniffer
               run: |
-                  echo "Starting PHP CodeSniffer..."; \
-                  composer global require "squizlabs/php_codesniffer=*"; \
-                  phpcs --standard=PSR12 --extensions=php . ; \
+                  echo "Starting PHP CodeSniffer..."
+                  if [ -f composer.json ]; then
+                    vendor/bin/phpcs --standard=PSR12 wp-content/themes/YanskiWordPress
+                  else
+                    composer global require "squizlabs/php_codesniffer=*"
+                    phpcs --standard=PSR12 wp-content/themes/YanskiWordPress
+                  fi
                   echo "PHP CodeSniffer done ✔"
 
-            # 6️⃣ Optional JS Lint (if you have JS)
+            # 6️⃣ Optional JS Lint
             - name: JS Lint
               run: |
-                  if [ -f package.json ]; then \
-                    npm install; \
-                    npx eslint ./assets/js || echo "JS lint done"; \
-                  else \
-                    echo "No JS files, skipping"; \
+                  if [ -f package.json ]; then
+                    npm install
+                    npx eslint ./assets/js || echo "JS lint done"
+                  else
+                    echo "No JS files found, skipping"
                   fi

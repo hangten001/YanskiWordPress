@@ -48,7 +48,6 @@ jobs:
                     phpcs --standard=PSR12 app/public/wp-content/themes/YanskiWordPress
                   fi
                   echo "PHP CodeSniffer done ✔"
-                                echo "PHP CodeSniffer done ✔"
 
             # 6️⃣ Optional JS Lint
             - name: JS Lint

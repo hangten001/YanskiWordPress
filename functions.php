@@ -3,7 +3,7 @@
 /**
  * Theme Functions
  * @package YanskiWordPress
- * 
+ *
  */
-echo "Hello";
 
+echo "Hello";

@@ -2,10 +2,10 @@
 
 /**
  * Header Template file
- * 
  * @package YanskiWordPress
- * 
+ *
  */
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -20,18 +20,15 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.2"
-
-            # 3️⃣ PHP Syntax Check
             - name: PHP Syntax Check
               run: |
                   echo "Checking PHP syntax..."
-                  find app/public/wp-content/themes/YanskiWordPress -type f -name "*.php" -exec php -l {} \;
+                  find . -type f -name "*.php" -exec php -l {} \;
                   echo "PHP syntax check done ✔"
 
-            # 4️⃣ PHP CodeSniffer (PSR-12)
             - name: PHP CodeSniffer
               run: |
                   echo "Running PHP CodeSniffer..."
                   composer global require "squizlabs/php_codesniffer=*"
-                  phpcs --standard=PSR12 app/public/wp-content/themes/YanskiWordPress
+                  phpcs --standard=PSR12 .
                   echo "PHP CodeSniffer done ✔"

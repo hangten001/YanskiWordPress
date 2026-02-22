@@ -42,12 +42,13 @@ jobs:
               run: |
                   echo "Starting PHP CodeSniffer..."
                   if [ -f composer.json ]; then
-                    vendor/bin/phpcs --standard=PSR12 wp-content/themes/YanskiWordPress
+                    vendor/bin/phpcs --standard=PSR12 app/public/wp-content/themes/YanskiWordPress
                   else
                     composer global require "squizlabs/php_codesniffer=*"
-                    phpcs --standard=PSR12 wp-content/themes/YanskiWordPress
+                    phpcs --standard=PSR12 app/public/wp-content/themes/YanskiWordPress
                   fi
                   echo "PHP CodeSniffer done ✔"
+                                echo "PHP CodeSniffer done ✔"
 
             # 6️⃣ Optional JS Lint
             - name: JS Lint

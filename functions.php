@@ -3,5 +3,6 @@
 /**
  * Theme Functions
  * @package YanskiWordPress
+ * 
  */
 

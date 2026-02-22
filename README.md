@@ -1,6 +1,7 @@
 # WordPress Theme - YanskiWordPress
 
 ![CI](https://github.com/hangten001/YanskiWordPress/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/hangten001/YanskiWordPress/actions/workflows/ci-industry.yml/badge.svg)
 
 Custom WordPress theme built from scratch.
 

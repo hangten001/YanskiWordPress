@@ -4,9 +4,7 @@
  * 
  * @package YanskiWordPress
  */
-
 ?>
-
    <footer>Footer</footer>
 </body>
 </html>

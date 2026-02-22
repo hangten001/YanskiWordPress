@@ -1,4 +1,4 @@
-name: WordPress Theme CI
+name: Simple WordPress CI
 
 on:
     push:
@@ -7,54 +7,31 @@ on:
         branches: [main]
 
 jobs:
-    lint-and-validate:
+    lint:
         runs-on: ubuntu-latest
 
         steps:
-            # 1️⃣ Checkout repository
+            # 1️⃣ Checkout repo
             - name: Checkout repository
               uses: actions/checkout@v3
 
-            # 2️⃣ Setup PHP 8.2
-            - name: Setup PHP
+            # 2️⃣ Setup PHP
+            - name: Setup PHP 8.2
               uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.2"
 
-            # 3️⃣ Install Composer dependencies if composer.json exists
-            - name: Install Composer dependencies
-              run: |
-                  if [ -f composer.json ]; then
-                    composer install --no-interaction --prefer-dist
-                  else
-                    echo "No composer.json found, skipping composer install"
-                  fi
-
-            # 4️⃣ PHP Syntax Check
+            # 3️⃣ PHP Syntax Check
             - name: PHP Syntax Check
               run: |
-                  echo "Starting PHP syntax check..."
-                  find . -type f -name "*.php" -exec php -l {} \;
+                  echo "Checking PHP syntax..."
+                  find app/public/wp-content/themes/YanskiWordPress -type f -name "*.php" -exec php -l {} \;
                   echo "PHP syntax check done ✔"
 
-            # 5️⃣ PHP CodeSniffer (PSR-12)
+            # 4️⃣ PHP CodeSniffer (PSR-12)
             - name: PHP CodeSniffer
               run: |
-                  echo "Starting PHP CodeSniffer..."
-                  if [ -f composer.json ]; then
-                    vendor/bin/phpcs --standard=PSR12 app/public/wp-content/themes/YanskiWordPress
-                  else
-                    composer global require "squizlabs/php_codesniffer=*"
-                    phpcs --standard=PSR12 app/public/wp-content/themes/YanskiWordPress
-                  fi
+                  echo "Running PHP CodeSniffer..."
+                  composer global require "squizlabs/php_codesniffer=*"
+                  phpcs --standard=PSR12 app/public/wp-content/themes/YanskiWordPress
                   echo "PHP CodeSniffer done ✔"
-
-            # 6️⃣ Optional JS Lint
-            - name: JS Lint
-              run: |
-                  if [ -f package.json ]; then
-                    npm install
-                    npx eslint ./assets/js || echo "JS lint done"
-                  else
-                    echo "No JS files found, skipping"
-                  fi

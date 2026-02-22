@@ -3,7 +3,6 @@
 /**
  * My WordPress Theme
  * @package YanskiWordPress
- * 
  */
 
 get_header();

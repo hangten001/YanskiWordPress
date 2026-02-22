@@ -2,7 +2,6 @@
 
 /**
  * Footer Template file
- * 
  * @package YanskiWordPress
  */
 

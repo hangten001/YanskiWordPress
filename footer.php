@@ -1,5 +1,12 @@
 <?php
-
-$footer = 'footer'
+/**
+ * Footer Template file
+ * 
+ * @package YanskiWordPress
+ */
 
 ?>
+
+   <footer>Footer</footer>
+</body>
+</html>

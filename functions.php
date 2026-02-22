@@ -7,6 +7,6 @@
  * 
  */
 
-echo "Hell"
+echo "Hell
 
 ?>

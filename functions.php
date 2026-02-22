@@ -6,3 +6,5 @@
  * @package YanskiWordPress
  * 
  */
+
+echo "Hell"

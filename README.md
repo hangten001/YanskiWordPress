@@ -1,7 +1,5 @@
 # WordPress Theme - YanskiWordPress
 
-# YanskiWordPress Theme
-
 ![CI](https://github.com/hangten001/YanskiWordPress/actions/workflows/ci.yml/badge.svg)
 
 Custom WordPress theme built from scratch.
@@ -27,5 +25,3 @@ Every push to `main` triggers:
 
 - PHP 8.2 setup
 - Automatic syntax check for all PHP files
-
-## 📂 Folder Structure

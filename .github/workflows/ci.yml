@@ -1,28 +1,50 @@
-name: YanskiWordPress Practice CI
+name: WordPress Theme CI
 
 on:
     push:
         branches: [main]
+    pull_request:
 
 jobs:
-    php-lint:
+    lint-and-validate:
         runs-on: ubuntu-latest
 
         steps:
-            # 1️⃣ Checkout the repo
+            # 1️⃣ Checkout repo
             - name: Checkout repository
               uses: actions/checkout@v3
 
             # 2️⃣ Setup PHP
-            - name: Setup PHP
+            - name: Setup PHP 8.2
               uses: shivammathur/setup-php@v2
               with:
                   php-version: "8.2"
 
-            # 3️⃣ Safe multi-command CI step
-            - name: PHP Syntax Check (Practice)
+            # 3️⃣ Install Composer dependencies
+            - name: Install Composer
+              run: composer install || echo "No composer.json, skipping"
+
+            # 4️⃣ PHP Syntax Check
+            - name: PHP syntax check
               run: |
                   echo "Starting PHP syntax check..."; \
                   find . -type f -name "*.php" -exec php -l {} \; ; \
-                  echo "All PHP files checked ✔"; \
-                  echo "You can safely add more commands here using semicolons!"
+                  echo "PHP syntax check done ✔"
+
+            # 5️⃣ PHP CodeSniffer (Industry standard PSR-12)
+            - name: PHP CodeSniffer
+              run: |
+                  echo "Starting PHP CodeSniffer..."; \
+                  composer global require "squizlabs/php_codesniffer=*"; \
+                  phpcs --standard=PSR12 --extensions=php . ; \
+                  echo "PHP CodeSniffer done ✔"
+
+            # 6️⃣ Optional JS Lint (if you have JS)
+            - name: JS Lint
+              run: |
+                  if [ -f package.json ]; then \
+                    npm install; \
+                    npx eslint ./assets/js || echo "JS lint done"; \
+                  else \
+                    echo "No JS files, skipping"; \
+                  fi

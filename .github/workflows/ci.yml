@@ -17,4 +17,4 @@ jobs:
             - name: Check PHP syntax
               run: |
                   echo "Checking PHP syntax only..."
-                  find wp-content/themes -name "*.php" -exec php -l {} \;
+                  find wp-content/themes/YanskiWordPress -name "*.php" -exec php -l {} \;

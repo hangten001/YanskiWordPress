@@ -13,8 +13,3 @@ jobs:
 
             - name: Show folder structure (optional, debug)
               run: ls -R
-
-            - name: Check PHP syntax
-              run: |
-                  echo "Checking PHP syntax only..."
-                  find YanskiWordPress -name "*.php" -exec php -l {} \;

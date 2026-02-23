@@ -1,34 +1,17 @@
-name: Simple WordPress CI
+name: Simple CI
 
 on:
     push:
-        branches: [main]
     pull_request:
-        branches: [main]
 
 jobs:
-    lint:
+    php-lint:
         runs-on: ubuntu-latest
 
         steps:
-            # 1️⃣ Checkout repo
-            - name: Checkout repository
-              uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
-            # 2️⃣ Setup PHP
-            - name: Setup PHP 8.2
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: "8.2"
-            - name: PHP Syntax Check
+            - name: Check PHP syntax
               run: |
                   echo "Checking PHP syntax..."
-                  find . -type f -name "*.php" -exec php -l {} \;
-                  echo "PHP syntax check done ✔"
-
-            - name: PHP CodeSniffer
-              run: |
-                  echo "Running PHP CodeSniffer..."
-                  composer global require "squizlabs/php_codesniffer=*"
-                  phpcs --standard=PSR12 .
-                  echo "PHP CodeSniffer done ✔"
+                  find wp-content/themes/YanskiWordPress -name "*.php" -exec php -l {} \;

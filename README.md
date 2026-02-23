@@ -25,3 +25,19 @@ Every push to `main` triggers:
 
 - PHP 8.2 setup
 - Automatic syntax check for all PHP files
+
+# set up file --
+
+    .gitignore
+        wp-admin/
+        wp-includes/
+        wp-content/uploads/
+        wp-content/plugins/
+    index.php
+        get_header(), get_footer()
+    style.css
+    function.php
+    header.php
+        wp_head(), body_class(), wp_body_open()
+    footer.php
+        wp_footer()

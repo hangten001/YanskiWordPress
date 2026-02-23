@@ -1,4 +1,4 @@
-name: Simple CI
+name: Simple PHP CI
 
 on:
     push:
@@ -11,7 +11,10 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
+            - name: Show folder structure (optional, debug)
+              run: ls -R
+
             - name: Check PHP syntax
               run: |
-                  echo "Checking PHP syntax..."
+                  echo "Checking PHP syntax only..."
                   find wp-content/themes -name "*.php" -exec php -l {} \;

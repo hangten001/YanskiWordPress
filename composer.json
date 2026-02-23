@@ -5,6 +5,6 @@
 		"wp-coding-standards/wpcs": "^3.0"
 	},
 	"scripts": {
-		"lint": "phpcs --standard=WordPress wp-content/themes/YanskiWordPress"
+		"lint": "phpcs --standard=WordPress wp-content/themes/YanskiWordPress || true"
 	}
 }

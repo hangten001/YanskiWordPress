@@ -13,3 +13,8 @@ jobs:
 
             - name: Show folder structure (optional, debug)
               run: ls -R
+
+            - name: Check PHP syntax only
+              run: |
+                  echo "Checking PHP syntax..."
+                  find . -type f -name "*.php" -exec php -l {} \;

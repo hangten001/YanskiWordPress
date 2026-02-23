@@ -1,6 +1,10 @@
 {
 	"name": "hangten/yanskiwordpress",
 	"require-dev": {
-		"squizlabs/php_codesniffer": "^4.0"
+		"squizlabs/php_codesniffer": "^4.0",
+		"wp-coding-standards/wpcs": "^3.0"
+	},
+	"scripts": {
+		"lint": "phpcs --standard=WordPress wp-content/themes/YanskiWordPress"
 	}
 }
